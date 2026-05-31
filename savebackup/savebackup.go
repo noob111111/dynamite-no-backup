@@ -260,9 +260,10 @@ func CreateLocalSaves(saveDir string, localSaveDir string) error {
 func Run(accountDir string) (err error) {
 	accDir := accountDir
 	if accountDir == "" {
-		return fmt.Errorf("no account dir provided to backup")
+		slog.Warn("No account directory provided - skipping backup")
+		return nil  // Return no error instead of failing
 	}
-
+	// ... rest of function
 	if err != nil {
 		return fmt.Errorf("get steam path: %w", err)
 	}
