@@ -460,10 +460,15 @@ func createHook() error {
 func Install(conf *config.Config) error {
 	var err error
 
-	err = savebackup.Run(conf.Dynamite.AccountDir)
-	if err != nil {
-		bd, _ := savebackup.GetAccountDirectory()
-		return fmt.Errorf("steam user not found, provide full path to account directory in config, example: %s, error %s", bd, err.Error())
+	// SKIP BACKUP - REMOVE THIS IF YOU WANT BACKUPS BACK
+	// err = savebackup.Run(conf.Dynamite.AccountDir)
+	// if err != nil {
+	// 	bd, _ := savebackup.GetAccountDirectory()
+	// 	return fmt.Errorf("steam user not found, provide full path to account directory in config, example: %s, error %s", bd, err.Error())
+	// }
+
+	if err = backupVendor(); err != nil {
+		return err
 	}
 
 	if err = backupVendor(); err != nil {
