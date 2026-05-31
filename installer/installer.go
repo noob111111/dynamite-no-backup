@@ -5,7 +5,6 @@ import (
 	"dynamite/config"
 	"dynamite/hook"
 	"dynamite/moddata"
-	"dynamite/savebackup"
 	"dynamite/util"
 	"encoding/json"
 	"errors"
